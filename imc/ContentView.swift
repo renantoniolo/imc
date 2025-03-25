@@ -49,47 +49,18 @@ struct ContentView: View {
 }
 
 extension ContentView {
-    func calculateIMC() {
+    private func calculateIMC() {
         guard let heightValue = Float(height), let weightValue = Float(weight) else {
             return
         }
         let imcValue = weightValue / pow(heightValue, 2)
-        
         result = "Seu IMC é: \(imcValue)  \n"
         if imcValue < 0 {
             result = "Erro, insira um valor valido"
             return
         }
-        
-        result += from(imc: imcValue).rawValue
-            
+        result += IMCCategoria.from(imc: imcValue).rawValue
     }
-    
-    func from(imc: Float) -> IMCCategoria {
-        switch imc {
-        case 0..<18.5:
-            return .abaixoDoPeso
-        case 18.5..<24.9:
-            return .pesoNormal
-        case 25..<29.9:
-            return .sobrepeso
-        case 30..<34.9:
-            return .obesidadeGrau1
-        case 35..<39.9:
-            return .obesidadeGrau2
-        default:
-            return .obesidadeGrau3
-        }
-    }
-}
-
-enum IMCCategoria: String {
-    case abaixoDoPeso = "Abaixo do Peso"
-    case pesoNormal = "Peso Normal"
-    case sobrepeso = "Sobrepeso"
-    case obesidadeGrau1 = "Obesidade Grau 1"
-    case obesidadeGrau2 = "Obesidade Grau 2"
-    case obesidadeGrau3 = "Obesidade Grau 3"
 }
 
 #Preview {
