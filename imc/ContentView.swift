@@ -59,7 +59,7 @@ extension ContentView {
             result = "Erro, insira um valor valido"
             return
         }
-        result += IMCCategoria.from(imc: imcValue).rawValue
+        result += "Sua categoria é: " + IMCCategoria.from(imc: imcValue).rawValue
     }
 }
 
