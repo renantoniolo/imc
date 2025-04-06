@@ -12,6 +12,7 @@ enum IMCCategoria: String {
     case obesidadeGrau1 = "Obesidade Grau 1"
     case obesidadeGrau2 = "Obesidade Grau 2"
     case obesidadeGrau3 = "Obesidade Grau 3"
+    case erro = "Erro ao calcular a categoria"
     
     static func from(imc: Float) -> IMCCategoria {
         switch imc {
@@ -25,8 +26,10 @@ enum IMCCategoria: String {
             return .obesidadeGrau1
         case 35..<39.9:
             return .obesidadeGrau2
-        default:
+        case 40...:
             return .obesidadeGrau3
+        default:
+            return .erro
         }
     }
 }
